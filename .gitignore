@@ -1,0 +1,9 @@
+*.dll
+*.so
+*.pyd
+*.h
+*.cpp
+*.ico
+ui/
+*.hpp
+
