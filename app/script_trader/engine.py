@@ -26,8 +26,9 @@ from vnpy.trader.object import (
     LogData,
     BarData
 )
-from vnpy.trader.rqdata import rqdata_client
-
+# from vnpy.trader.rqdata import rqdata_client
+from vnpy.trader.mddata import mddata_client
+from vnpy.trader.setting import SETTINGS
 
 APP_NAME = "ScriptTrader"
 
@@ -49,9 +50,13 @@ class ScriptEngine(BaseEngine):
         """
         Start script engine.
         """
-        result = rqdata_client.init()
+        # result = rqdata_client.init()
+        # if result:
+        #     self.write_log("RQData数据接口初始化成功")
+        result = mddata_client.init()
+        md_data_api = SETTINGS["mddata.api"]
         if result:
-            self.write_log("RQData数据接口初始化成功")
+            self.write_log(f"{md_data_api}数据接口初始化成功")
 
     def start_strategy(self, script_path: str):
         """
@@ -255,7 +260,14 @@ class ScriptEngine(BaseEngine):
             interval=interval
         )
 
-        return get_data(rqdata_client.query_history, arg=req, use_df=use_df)
+        try:
+            data = mddata_client.query_history(req)
+        except Exception as ex:
+            self.write_log(f"{contract.symbol}.{contract.exchange.value}合约下载失败：{ex.args}")
+            return None
+
+        # return get_data(rqdata_client.query_history, arg=req, use_df=use_df)
+        return data
 
     def write_log(self, msg: str) -> None:
         """"""

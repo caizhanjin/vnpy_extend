@@ -37,7 +37,9 @@ from vnpy.trader.constant import (
 )
 from vnpy.trader.utility import load_json, save_json, extract_vt_symbol, round_to
 from vnpy.trader.database import database_manager
-from vnpy.trader.rqdata import rqdata_client
+# from vnpy.trader.rqdata import rqdata_client
+from vnpy.trader.mddata import mddata_client
+from vnpy.trader.setting import SETTINGS
 from vnpy.trader.converter import OffsetConverter
 
 from .base import (
@@ -125,9 +127,10 @@ class CtaEngine(BaseEngine):
         """
         Init RQData client.
         """
-        result = rqdata_client.init()
+        result = mddata_client.init()
+        md_data_api = SETTINGS["mddata.api"]
         if result:
-            self.write_log("RQData数据接口初始化成功")
+            self.write_log(f"{md_data_api}数据接口初始化成功")
 
     def query_bar_from_rq(
         self, symbol: str, exchange: Exchange, interval: Interval, start: datetime, end: datetime
@@ -142,7 +145,12 @@ class CtaEngine(BaseEngine):
             start=start,
             end=end
         )
-        data = rqdata_client.query_history(req)
+        # data = mddata_client.query_history(req)
+        try:
+            data = mddata_client.query_history(req)
+        except Exception as ex:
+            self.write_log(f"{symbol}.{exchange.value}合约下载失败：{ex.args}")
+            return None
         return data
 
     def process_tick_event(self, event: Event):

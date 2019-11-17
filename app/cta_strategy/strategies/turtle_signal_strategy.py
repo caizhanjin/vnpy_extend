@@ -134,7 +134,7 @@ class TurtleSignalStrategy(CtaTemplate):
         pass
 
     def send_buy_orders(self, price):
-        """"""
+        """里面包含加仓逻辑"""
         t = self.pos / self.fixed_size
 
         if t < 1:
