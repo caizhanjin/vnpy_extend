@@ -22,12 +22,8 @@ SETTINGS = {
     "email.sender": "",
     "email.receiver": "",
 
-    # 兼容 jq_data
-    "mddata.api": "rqdata",
     "rqdata.username": "",
     "rqdata.password": "",
-    "jqdata.username": "",
-    "jqdata.password": "",
 
     "database.driver": "sqlite",  # see database.Driver
     "database.database": "database.db",  # for sqlite, use this as filepath
