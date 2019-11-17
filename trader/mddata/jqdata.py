@@ -78,8 +78,8 @@ class JqdataClient(MdDataApi):
 
             # Check for index symbol
             time_str = symbol[count:]
-            if time_str in ["88", "888", "99"]:
-                return symbol
+            if time_str in ["88", "888", "99", "8888"]:
+                return f"{symbol}.XZCE"
 
             # noinspection PyUnboundLocalVariable
             product = symbol[:count]
