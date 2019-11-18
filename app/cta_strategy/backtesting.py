@@ -252,7 +252,7 @@ class BacktestingEngine:
             progress += progress_delta / total_delta
             progress = min(progress, 1)
             progress_bar = "#" * int(progress * 10)
-            self.output(f"加载进度：{progress_bar} [{progress:.0%}]")
+            # self.output(f"加载进度：{progress_bar} [{progress:.0%}]")
 
             start = end + interval_delta
             end += (progress_delta + interval_delta)

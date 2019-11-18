@@ -30,7 +30,7 @@ SETTINGS = {
     "jqdata.password": "",
 
     "database.driver": "sqlite",  # see database.Driver
-    "database.database": "database.db",  # for sqlite, use this as filepath
+    "database.database": "C:\\self_vnpy\\.vntrader\\database.db",  # for sqlite, use this as filepath
     "database.host": "localhost",
     "database.port": 3306,
     "database.user": "root",
