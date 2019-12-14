@@ -6,4 +6,5 @@
 *.ico
 ui/
 *.hpp
-
+__pycache__
+*.pyc

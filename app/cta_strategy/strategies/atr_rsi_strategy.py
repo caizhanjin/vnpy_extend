@@ -20,7 +20,7 @@ class AtrRsiStrategy(CtaTemplate):
     rsi_length = 5
     rsi_entry = 16
     trailing_percent = 0.8
-    fixed_size = 1
+    fixed_size = 2
 
     atr_value = 0
     atr_ma = 0
