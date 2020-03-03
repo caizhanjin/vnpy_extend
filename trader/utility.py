@@ -508,6 +508,14 @@ class ArrayManager(object):
             return result
         return result[-1]
 
+    def sar(self, array=False):
+        """
+        """
+        result = talib.SAR(self.high, self.low)
+        if array:
+            return result
+        return result[-1]
+
 
 def virtual(func: "callable"):
     """
