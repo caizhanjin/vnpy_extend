@@ -15,13 +15,3 @@
 
 + 注释加载数据进度条，涉及文件：
     + app/cta_strategy/backtesting.py
-
-+ 添加策略工具文件
-    + app/cta_strategy/tools.py
-    + app/cta_strategy/\_\_init\_\_.py
-    
-+ 添加计算指标
-    + trader/utility.py
-
-+ 文件引入新增
-    + app/cta_strategy/__init__.py

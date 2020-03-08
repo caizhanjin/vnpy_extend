@@ -9,3 +9,6 @@ ui/
 __pycache__
 *.pyc
 .idea
+/gateway/
+/event/
+/chart/
